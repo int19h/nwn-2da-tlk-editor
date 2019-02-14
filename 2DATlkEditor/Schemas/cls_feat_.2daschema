@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TwoDASchema xmlns="http://int19h.org/xsd/2daschema.xsd"
+             DisplayName="Class Feats"
+             AppliesTo="^cls_feat_[^.]*\.2da$">
+
+  <Column Name="FeatLabel" DataType="String">
+    <Description>Human-readable identifier for the feat. Usually the same as the corresponding Label in feat.2da.</Description>
+  </Column>
+
+  <Column Name="FeatIndex" DataType="Integer" RowSource="feat.2da">
+    <Description>Feat described.</Description>
+  </Column>
+
+  <Column Name="List" DataType="Integer">
+    <Description>Limits how the feat can be taken.</Description>
+    <Enum>
+      <Item Value="0">Normal feat only</Item>
+      <Item Value="1">Normal or bonus feat</Item>
+      <Item Value="2">Bonus feat only</Item>
+      <Item Value="3">Granted on level-up</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="GrantedOnLevel" DataType="Integer">
+    <Description>How many levels the character must have to be able to take the feat. For feats granted on level-up, this is the level at which they are granted.</Description>
+    <Enum>
+      <Item Value="-1">Feat is not selectable on level-up</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="OnMenu" DataType="Integer">
+    <Description>Determines whether the feat appears on the radial menu in the UI.</Description>
+    <Enum>
+      <Item Value="0">No radial menu entry</Item>
+      <Item Value="1">Entry in class radial menu</Item>
+      <Item Value="2">Entry in epic spell radial menu</Item>
+    </Enum>
+  </Column>
+
+</TwoDASchema>

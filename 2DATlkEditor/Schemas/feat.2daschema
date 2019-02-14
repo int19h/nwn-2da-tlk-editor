@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TwoDASchema xmlns="http://int19h.org/xsd/2daschema.xsd"
+             DisplayName="Feats"
+             AppliesTo="^feat\.2da$">
+
+  <Column Name="LABEL" DataType="String">
+    <Description>Human-readable identifier for the feat.</Description>
+  </Column>
+
+  <Column Name="FEAT" DataType="StrRef">
+    <Description>Player-visible name of the feat.</Description>
+  </Column>
+
+  <Column Name="DESCRIPTION" DataType="StrRef">
+    <Description>Description of the feat.</Description>
+  </Column>
+
+  <Column Name="ICON">
+    <Description>Name (without extension) of the icon file for the feat.</Description>
+  </Column>
+
+  <Column Name="MINATTACKBONUS" DataType="Integer">
+    <Description>The minimum base attack bonus needed to qualify for the feat.</Description>
+  </Column>
+
+  <Column Name="MINSTR" DataType="Integer">
+    <Description>The minimum strength needed to qualify for the feat.</Description>
+  </Column>
+
+  <Column Name="MINDEX" DataType="Integer">
+    <Description>The minimum dexterity needed to qualify for the feat.</Description>
+  </Column>
+
+  <Column Name="MININT" DataType="Integer">
+    <Description>The minimum intelligence needed to qualify for the feat.</Description>
+  </Column>
+
+  <Column Name="MINWIS" DataType="Integer">
+    <Description>The minimum wisdom needed to qualify for the feat.</Description>
+  </Column>
+
+  <Column Name="MINCON" DataType="Integer">
+    <Description>The minimum constitution needed to qualify for the feat.</Description>
+  </Column>
+
+  <Column Name="MINCHA" DataType="Integer">
+    <Description>The minimum charisma needed to qualify for the feat.</Description>
+  </Column>
+
+  <Column Name="MINSPELLLVL" DataType="Integer">
+    <Description>Minimum castable spell level required to take the feat.</Description>
+    <Enum>
+      <Item Value="1" />
+      <Item Value="2" />
+      <Item Value="3" />
+      <Item Value="4" />
+      <Item Value="5" />
+      <Item Value="6" />
+      <Item Value="7" />
+      <Item Value="8" />
+      <Item Value="9" />
+    </Enum>
+  </Column>
+
+  <Column Name="PREREQFEAT1" DataType="Integer" RowSource="feat.2da">
+    <Description>First prerequisite feat required to be able to take this feat.</Description>
+  </Column>
+
+  <Column Name="PREREQFEAT2" DataType="Integer" RowSource="feat.2da">
+    <Description>Second prerequisite feat required to be able to take this feat.</Description>
+  </Column>
+
+  <Column Name="GAINMULTIPLE" DataType="Integer">
+    <Description>Specifies whether the feat can be gained more than once.</Description>
+    <Enum>
+      <Item Value="0">No</Item>
+      <Item Value="1">Yes</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="EFFECTSSTACK" DataType="Integer">
+    <Description>Specifies whether the effects of this feat stack with other feats.</Description>
+    <Enum>
+      <Item Value="0">No</Item>
+      <Item Value="1">Yes</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="ALLCLASSESCANUSE" DataType="Integer">
+    <Description>Specifies whether the feat is available to all classes.</Description>
+    <Enum>
+      <Item Value="0">No</Item>
+      <Item Value="1">Yes</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="CATEGORY" DataType="Integer">
+    <Description>Category the feat belongs to (for AI).</Description>
+  </Column>
+
+  <Column Name="MAXCR" DataType="Integer" />
+
+  <Column Name="SPELLID" DataType="Integer" RowSource="spells.2da">
+    <Description>Spell associated with the feat, if it is activatable.</Description>
+  </Column>
+
+  <Column Name="SUCCESSOR" DataType="Integer" RowSource="feat.2da">
+    <Description>Marks feat as following another feat in a feat progression.</Description>
+  </Column>
+
+  <Column Name="CRValue" DataType="Float">
+    <Description>Defines the impact this feat has on CR calculation.</Description>
+  </Column>
+
+  <Column Name="USESPERDAY" DataType="Integer">
+    <Description>How many times the feat can be used between rest cycles.</Description>
+  </Column>
+
+  <Column Name="MASTERFEAT" DataType="Integer" RowSource="masterfeats.2da">
+    <Description>Master feat of this feat, used to group feats in the radial menu.</Description>
+  </Column>
+
+  <Column Name="TARGETSELF" DataType="Integer">
+    <Enum>
+      <Item Value="0">No</Item>
+      <Item Value="1">Yes</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="OrReqFeat0" DataType="Integer" RowSource="feat.2da">
+    <Description>The first of the alternate prerequisite feats for this feat. Only one of prerequisite feats is required to take this feat.</Description>
+  </Column>
+
+  <Column Name="OrReqFeat1" DataType="Integer" RowSource="feat.2da">
+    <Description>The second of the alternate prerequisite feats for this feat. Only one of prerequisite feats is required to take this feat.</Description>
+  </Column>
+
+  <Column Name="OrReqFeat2" DataType="Integer" RowSource="feat.2da">
+    <Description>The third of the alternate prerequisite feats for this feat. Only one of prerequisite feats is required to take this feat.</Description>
+  </Column>
+
+  <Column Name="OrReqFeat3" DataType="Integer" RowSource="feat.2da">
+    <Description>The fourth of the alternate prerequisite feats for this feat. Only one of prerequisite feats is required to take this feat.</Description>
+  </Column>
+
+  <Column Name="OrReqFeat4" DataType="Integer" RowSource="feat.2da">
+    <Description>The fifth of the alternate prerequisite feats for this feat. Only one of prerequisite feats is required to take this feat.</Description>
+  </Column>
+
+  <Column Name="REQSKILL" DataType="Integer" RowSource="skills.2da">
+    <Description>The first prerequisite skill for this feat. Number of ranks required is defined by ReqSkillMinRanks.</Description>
+  </Column>
+
+  <Column Name="ReqSkillMinRanks" DataType="Integer">
+    <Description>Number of ranks in the first prerequisite skill (REQSKILL) required for this feat.</Description>
+  </Column>
+
+  <Column Name="REQSKILL2" DataType="Integer" RowSource="skills.2da">
+    <Description>The second prerequisite skill for this feat. Number of ranks required is defined by ReqSkillMinRanks2.</Description>
+  </Column>
+
+  <Column Name="ReqSkillMinRanks2" DataType="Integer">
+    <Description>Number of ranks in the second prerequisite skill (REQSKILL2) required for this feat.</Description>
+  </Column>
+
+  <Column Name="Constant">
+    <Description>Name of the NWScript constant for this feat.</Description>
+  </Column>
+
+  <Column Name="TOOLSCATEGORIES" DataType="Integer">
+    <Description>The category the feat is shown in in the toolset.</Description>
+    <Enum>
+      <Item Value="1">Combat Feats</Item>
+      <Item Value="2">Active Combat Feats</Item>
+      <Item Value="3">Defensive Feats</Item>
+      <Item Value="4">Magical Feats</Item>
+      <Item Value="5">Class/Racial Feats</Item>
+      <Item Value="6">Other Feats</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="HostileFeat" DataType="Integer">
+    <Description>Specifies whether the use of this feat on someone is considered an aggressive action.</Description>
+    <Enum>
+      <Item Value="0">No</Item>
+      <Item Value="1">Yes</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="MinLevel" DataType="Integer">
+    <Description>Minimum level required to take this feat.</Description>
+  </Column>
+
+  <Column Name="MinLevelClass" DataType="Integer" RowSource="classes.2da">
+    <Description>The class that is required to have the minimum level specified by MinLevel. If blank, then total character level is used instead.</Description>
+  </Column>
+
+  <Column Name="MaxLevel" DataType="Integer">
+    <Description>Maximum level at which the feat can be taken.</Description>
+  </Column>
+
+  <Column Name="MinFortSave" DataType="Integer">
+    <Description>Minimum fortitude save required to take this feat.</Description>
+  </Column>
+
+  <Column Name="PreReqEpic" DataType="Integer">
+    <Description>Specifies whether the character must be epic to be able to take this feat.</Description>
+    <Enum>
+      <Item Value="0">No</Item>
+      <Item Value="1">Yes</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="ReqAction" DataType="Integer">
+    <Description>Specifies whether the feat is triggered instantly on activation, without going through the action queue.</Description>
+    <Enum>
+      <Item Value="0">No</Item>
+      <Item Value="1">Yes</Item>
+    </Enum>
+  </Column>
+
+</TwoDASchema>

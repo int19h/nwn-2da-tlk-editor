@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TwoDASchema xmlns="http://int19h.org/xsd/2daschema.xsd"
+             DisplayName="Classes"
+             AppliesTo="^classes\.2da$">
+
+  <Column Name="Label" DataType="String">
+    <Description>Human-readable identifier for the class.</Description>
+  </Column>
+
+  <Column Name="Name" DataType="StrRef">
+    <Description>Player-visible singular name of the class.</Description>
+  </Column>
+
+  <Column Name="Plural" DataType="StrRef">
+    <Description>Player-visible plural name of the class.</Description>
+  </Column>
+
+  <Column Name="Lower" DataType="StrRef">
+    <Description>Player-visible singular name of the class in lower case.</Description>
+  </Column>
+
+  <Column Name="Description" DataType="StrRef">
+    <Description>Player-visible description of the class.</Description>
+  </Column>
+
+  <Column Name="Icon" DataType="String">
+    <Description>Name of the icon file for the class.</Description>
+  </Column>
+
+  <Column Name="HitDie" DataType="Integer">
+    <Description>Hit Die for the class.</Description>
+  </Column>
+
+  <Column Name="AttackBonusTable" DataType="String">
+    <Description>Name of the 2DA file with the BAB table for the class.</Description>
+    <Enum>
+      <Item Value="CLS_ATTACK_1">Fighter BAB</Item>
+      <Item Value="CLS_ATTACK_2">Rogue BAB</Item>
+      <Item Value="CLS_ATTACK_3">Wizard BAB</Item>
+      <Item Value="CLS_ATTACK_4">0 BAB</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="FeatsTable" DataType="String">
+    <Description>Name of the 2DA file with the feat table for the class. Typically named cls_feat_*.2da.</Description>
+  </Column>
+
+  <Column Name="SavingThrowTable" DataType="String">
+    <Description>Name of the 2DA file with the saving throws table for the class. Typically named cls_savthr_*.2da.</Description>
+  </Column>
+
+  <Column Name="SkillsTable" DataType="String">
+    <Description>Name of the 2DA file with the skill table for the class. Typically named cls_skill_*.2da.</Description>
+  </Column>
+
+  <Column Name="BonusFeatsTable" DataType="String">
+    <Description>Name of the 2DA file with the bonus feat table for the class. Typically named cls_bfeat_*.2da.</Description>
+  </Column>
+
+  <Column Name="SkillPointBase" DataType="Integer">
+    <Description>Number of base skill points gained on each level of the class.</Description>
+  </Column>
+  
+  <Column Name="SpellGainTable" DataType="String">
+  </Column>
+
+  <Column Name="SpellKnownTable" DataType="String">
+  </Column>
+
+  <Column Name="PlayerClass" DataType="Integer">
+    <Description>Determines whether the class can be selected for player characters.</Description>
+    <Enum>
+      <Item Value="0">No</Item>
+      <Item Value="1">Yes</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="Spellcaster" DataType="Integer">
+    <Description>Determines whether character of this class can cast spells.</Description>
+    <Enum>
+      <Item Value="0">No</Item>
+      <Item Value="1">Yes</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="Str" DataType="Integer">
+    <Description>Recommended Strength ability score for this class. Used for "Recommended" feature during character creation and level-up.</Description>
+  </Column>
+
+  <Column Name="Dex" DataType="Integer">
+    <Description>Recommended Dexterity ability score for this class. Used for "Recommended" feature during character creation and level-up.</Description>
+  </Column>
+
+  <Column Name="Con" DataType="Integer">
+    <Description>Recommended Constitution ability score for this class. Used for "Recommended" feature during character creation and level-up.</Description>
+  </Column>
+
+  <Column Name="Wis" DataType="Integer">
+    <Description>Recommended Wisdom ability score for this class. Used for "Recommended" feature during character creation and level-up.</Description>
+  </Column>
+
+  <Column Name="Int" DataType="Integer">
+    <Description>Recommended Intelligence ability score for this class. Used for "Recommended" feature during character creation and level-up.</Description>
+  </Column>
+
+  <Column Name="Cha" DataType="Integer">
+    <Description>Recommended Charisma ability score for this class. Used for "Recommended" feature during character creation and level-up.</Description>
+  </Column>
+
+  <Column Name="PrimaryAbil" DataType="String">
+    <Description>Primary ability score for this class. Used for "Recommended" feature during character creation and level-up.</Description>
+    <Enum>
+      <Item Value="STR">Strength</Item>
+      <Item Value="DEX">Dexterity</Item>
+      <Item Value="CON">Constitution</Item>
+      <Item Value="WIS">Wisdom</Item>
+      <Item Value="INT">Intelligence</Item>
+      <Item Value="CHA">Charisma</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="AlignRestrict" DataType="HexInteger" Digits="2">
+    <Description>Alignment restrictions for this class.</Description>
+    <Flags>
+      <Flag Value="0x01">Cannot be neutral</Flag>
+      <Flag Value="0x02">Cannot be lawful</Flag>
+      <Flag Value="0x04">Cannot be chaotic</Flag>
+      <Flag Value="0x08">Cannot be good</Flag>
+      <Flag Value="0x10">Cannot be evil</Flag>
+    </Flags>
+  </Column>
+
+  <Column Name="AlignRstrctType" DataType="HexInteger" Digits="2">
+    <Description>Type of alignment restrictions for this class.</Description>
+    <Flags>
+      <Flag Value="0x01">Lawful/Chaotic restriction</Flag>
+      <Flag Value="0x02">Good/Evil restriction</Flag>
+    </Flags>
+  </Column>
+
+  <Column Name="InvertRestrict" DataType="Integer">
+    <Description>Determines whether the restriction defined by AlignRestrict should be inverted before applying it.</Description>
+    <Enum>
+      <Item Value="0">No</Item>
+      <Item Value="1">Yes</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="Constant" DataType="String">
+    <Description>Name of NWScript constant for this class.</Description>
+  </Column>
+
+  <Column Name="EffCRLvl01" DataType="Integer" />
+  <Column Name="EffCRLvl02" DataType="Integer" />
+  <Column Name="EffCRLvl03" DataType="Integer" />
+  <Column Name="EffCRLvl04" DataType="Integer" />
+  <Column Name="EffCRLvl05" DataType="Integer" />
+  <Column Name="EffCRLvl06" DataType="Integer" />
+  <Column Name="EffCRLvl07" DataType="Integer" />
+  <Column Name="EffCRLvl08" DataType="Integer" />
+  <Column Name="EffCRLvl09" DataType="Integer" />
+  <Column Name="EffCRLvl10" DataType="Integer" />
+  <Column Name="EffCRLvl11" DataType="Integer" />
+  <Column Name="EffCRLvl12" DataType="Integer" />
+  <Column Name="EffCRLvl13" DataType="Integer" />
+  <Column Name="EffCRLvl14" DataType="Integer" />
+  <Column Name="EffCRLvl15" DataType="Integer" />
+  <Column Name="EffCRLvl16" DataType="Integer" />
+  <Column Name="EffCRLvl17" DataType="Integer" />
+  <Column Name="EffCRLvl18" DataType="Integer" />
+  <Column Name="EffCRLvl19" DataType="Integer" />
+
+  <Column Name="PreReqTable" DataType="String">
+    <Description>Name of the 2DA file with the prerequisites table for the class. Typically named cls_pres_*.2da.</Description>
+  </Column>
+
+  <Column Name="MaxLevel" DataType="Integer">
+    <Description>The highest level it is possible to have in this class.</Description>
+  </Column>
+
+  <Column Name="XPPenalty" DataType="Integer">
+    <Description>Determines whether this class will be accounted for in multiclassing XP penalty calculation.</Description>
+    <Enum>
+      <Item Value="0">No</Item>
+      <Item Value="1">Yes</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="ArcSpellLvlMod" DataType="Integer">
+    <Description>Arcane spell level modifier.</Description>
+  </Column>
+
+  <Column Name="DivSpellLvlMod" DataType="Integer">
+    <Description>Divine spell level modifier.</Description>
+  </Column>
+
+  <Column Name="EpicLevel" DataType="Integer">
+    <Description>At what class level the character becomes epic in this class.</Description>
+  </Column>
+
+  <Column Name="Package" DataType="Integer" RowSource="packages.2da">
+    <Description>Default auto-levelling package for this class.</Description>
+  </Column>
+
+</TwoDASchema>
+ 

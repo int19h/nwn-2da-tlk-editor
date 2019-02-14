@@ -1,0 +1,170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ts="http://int19h.org/xsd/2daschema.xsd" elementFormDefault="qualified" targetNamespace="http://int19h.org/xsd/2daschema.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="TwoDASchema">
+    <xs:annotation>
+      <xs:documentation>Root element of the 2DA schema.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" name="Column" type="ts:Column">
+          <xs:annotation>
+            <xs:documentation>Description of a single column in the 2DA.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="DisplayName" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Name of the schema as displayed in the UI of the editor.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="AppliesTo" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            Case-insensitive regular expression that should match the names (with extension, but without the full path) of all 2DA files that are described by this schema.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+    <xs:unique name="columnName">
+      <xs:annotation>
+        <xs:documentation>Column name must be unique within the schema.</xs:documentation>
+      </xs:annotation>
+      <xs:selector xpath="Column" />
+      <xs:field xpath="@Name" />
+    </xs:unique>
+  </xs:element>
+
+  <xs:complexType name="Column">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="Description" type="xs:string" />
+      <xs:choice>
+        <xs:element minOccurs="0" maxOccurs="1" name="Enum" type="ts:Enum">
+          <xs:annotation>
+            <xs:documentation>List of standard values for the field.</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element minOccurs="0" maxOccurs="1" name="Flags" type="ts:Flags">
+          <xs:annotation>
+            <xs:documentation>List of bit flags for the field. Only valid if @DataType='HexNumber'</xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:choice>
+    </xs:sequence>
+    <xs:attribute name="Name" type="xs:string" use="required">
+      <xs:annotation>
+        <xs:documentation>Name of the column in the 2DA. Case-sensitive.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute default="String" name="DataType" type="ts:DataType">
+      <xs:annotation>
+        <xs:documentation>Type of the column.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute default="0" name="Digits" type="xs:int">
+      <xs:annotation>
+        <xs:documentation>Number of digits to show in a hexadecimal number (with leading zeroes if necessary). Only valid if @DataType='HexNumber'.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute default="true" name="AllowBlanks" type="xs:boolean">
+      <xs:annotation>
+        <xs:documentation>Whether the 2DA column can contain blank entries (****).</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="RowSource" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>Name of 2DA file referenced by this column.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute default="#" name="RowSourceKeyField" type="xs:string">
+      <xs:annotation>
+        <xs:documentation>Name of the key column in the 2DA file referenced by this column. Values from that column will be used for this one as well.</xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:complexType>
+
+  <xs:complexType name="Enum">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Item" type="ts:Item">
+        <xs:annotation>
+          <xs:documentation>A single standard value for the column.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Item">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:annotation>
+          <xs:documentation>Description of the value, to be displayed in the UI of the editor.</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="Value" type="xs:string" use="required">
+          <xs:annotation>
+            <xs:documentation>The actual value.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:complexType name="Flags">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Flag" type="ts:Flag">
+        <xs:annotation>
+          <xs:documentation>A single bit flag for the column.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="Flag">
+    <xs:simpleContent>
+      <xs:extension base="xs:string">
+        <xs:annotation>
+          <xs:documentation>Description of the flag, to be displayed in the UI of the editor.</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="Value" use="required">
+          <xs:annotation>
+            <xs:documentation>The actual hexadecimal value of the flag.</xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:pattern value="0[xX][0-9A-Fa-f]+" />
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:attribute>
+      </xs:extension>
+    </xs:simpleContent>
+  </xs:complexType>
+
+  <xs:simpleType name="DataType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="String">
+        <xs:annotation>
+          <xs:documentation>A free-form string. Cannot contain the quotation mark symbol (a 2DA file format limitation).</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Integer">
+        <xs:annotation>
+          <xs:documentation>A 32-bit integer.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="HexInteger">
+        <xs:annotation>
+          <xs:documentation>A 32-bit unsigned integer in C-style hexadecimal representation.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="Float">
+        <xs:annotation>
+          <xs:documentation>A 32-bit IEEE floating-point number.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="StrRef">
+        <xs:annotation>
+          <xs:documentation>An integer which is a reference to a string in a TLK file.</xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

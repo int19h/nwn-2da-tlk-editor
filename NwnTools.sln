@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28218.60
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2DALib", "2DALib\2DALib.csproj", "{258302AF-89DB-499E-967B-655AE285A978}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2DATlkEditor", "2DATlkEditor\2DATlkEditor.csproj", "{885D3C04-40F8-4C7C-A8E8-6AF78BC75893}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup", "Setup\Setup.vdproj", "{47813D95-449E-41EE-916E-1EFCE43B2851}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TlkLib", "TlkLib\TlkLib.csproj", "{E497B913-6F22-4D69-A4D6-BCAE5EB43786}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{258302AF-89DB-499E-967B-655AE285A978}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{258302AF-89DB-499E-967B-655AE285A978}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{258302AF-89DB-499E-967B-655AE285A978}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{258302AF-89DB-499E-967B-655AE285A978}.Release|Any CPU.Build.0 = Release|Any CPU
+		{885D3C04-40F8-4C7C-A8E8-6AF78BC75893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{885D3C04-40F8-4C7C-A8E8-6AF78BC75893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{885D3C04-40F8-4C7C-A8E8-6AF78BC75893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{885D3C04-40F8-4C7C-A8E8-6AF78BC75893}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47813D95-449E-41EE-916E-1EFCE43B2851}.Debug|Any CPU.ActiveCfg = Debug
+		{47813D95-449E-41EE-916E-1EFCE43B2851}.Release|Any CPU.ActiveCfg = Release
+		{E497B913-6F22-4D69-A4D6-BCAE5EB43786}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E497B913-6F22-4D69-A4D6-BCAE5EB43786}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E497B913-6F22-4D69-A4D6-BCAE5EB43786}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E497B913-6F22-4D69-A4D6-BCAE5EB43786}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		VisualSVNWorkingCopyRoot = 
+	EndGlobalSection
+EndGlobal

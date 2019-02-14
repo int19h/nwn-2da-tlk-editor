@@ -1,0 +1,449 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TwoDASchema xmlns="http://int19h.org/xsd/2daschema.xsd"
+             DisplayName="Spells"
+             AppliesTo="^spells\.2da$">
+
+  <Column Name="Label" DataType="String">
+    <Description>Human-readable identifier for the spell.</Description>
+  </Column>
+
+  <Column Name="Name" DataType="StrRef">
+    <Description>StrRef for the name of the spell. Used for true spells and monster abilities only, not for item-cast and activatable feat pseudo-spells.</Description>
+  </Column>
+
+  <Column Name="IconResRef" DataType="String">
+    <Description>Name of the icon file for the spell. Used for true spells and monster abilities only, not for item-cast and activatable feat pseudo-spells.</Description>
+  </Column>
+
+  <Column Name="School" DataType="String" RowSource="spellschools.2da" RowSourceKeyField="Letter">
+    <Description>School of magic.</Description>
+    <!--<Enum>
+      <Item Value="A">Abjuration</Item>
+      <Item Value="C">Conjuration</Item>
+      <Item Value="D">Divination</Item>
+      <Item Value="E">Enchantment</Item>
+      <Item Value="I">Illusion</Item>
+      <Item Value="N">Necromancy</Item>
+      <Item Value="T">Transmutation</Item>
+      <Item Value="V">Evocation</Item>
+    </Enum>-->
+  </Column>
+
+  <Column Name="Range" DataType="String">
+    <Description>Range of the spell. See ranges.2da.</Description>
+    <Enum>
+      <Item Value="P">Personal (0m)</Item>
+      <Item Value="T">Touch (2.25m)</Item>
+      <Item Value="S">Short (8m)</Item>
+      <Item Value="M">Medium (20m)</Item>
+      <Item Value="L">Long (40m)</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="VS" DataType="String">
+    <Description>Defines presence or absence of verbal and somatic components.</Description>
+    <Enum>
+      <Item Value="V">Verbal only</Item>
+      <Item Value="S">Somatic only</Item>
+      <Item Value="VS">Verbal and somatic</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="MetaMagic" DataType="HexInteger" Digits="2">
+    <Description>Defines which metamagic feats can be used together with this spell.</Description>
+    <Flags>
+      <Flag Value="0x01">Empower</Flag>
+      <Flag Value="0x02">Extend</Flag>
+      <Flag Value="0x04">Maximize</Flag>
+      <Flag Value="0x08">Quicken</Flag>
+      <Flag Value="0x10">Silent</Flag>
+      <Flag Value="0x20">Still</Flag>
+    </Flags>
+  </Column>
+
+  <Column Name="TargetType" DataType="HexInteger" Digits="2">
+    <Description>Valid targets for the spell.</Description>
+    <Flags>
+      <Flag Value="0x01">Self</Flag>
+      <Flag Value="0x02">Creatures</Flag>
+      <Flag Value="0x04">Area/Ground</Flag>
+      <Flag Value="0x08">Items</Flag>
+      <Flag Value="0x10">Doors</Flag>
+      <Flag Value="0x20">Placeables</Flag>
+      <Flag Value="0x40">Traps</Flag>
+    </Flags>
+  </Column>
+
+  <Column Name="ImpactScript" DataType="String">
+    <Description>Name of the script that runs against target of the spell.</Description>
+  </Column>
+
+  <Column Name="Bard" DataType="Integer">
+    <Description>Spell level of this spell for Bard, or blank if not available to Bard.</Description>
+    <Enum>
+      <Item Value="0">Cantrip</Item>
+      <Item Value="1" />
+      <Item Value="2" />
+      <Item Value="3" />
+      <Item Value="5" />
+      <Item Value="6" />
+      <Item Value="7" />
+      <Item Value="8" />
+      <Item Value="9" />
+      <Item Value="10">Epic</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="Cleric" DataType="Integer">
+    <Description>Spell level of this spell for Cleric, or blank if not available to Cleric.</Description>
+    <Enum>
+      <Item Value="0">Cantrip</Item>
+      <Item Value="1" />
+      <Item Value="2" />
+      <Item Value="3" />
+      <Item Value="5" />
+      <Item Value="6" />
+      <Item Value="7" />
+      <Item Value="8" />
+      <Item Value="9" />
+      <Item Value="10">Epic</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="Druid" DataType="Integer">
+    <Description>Spell level of this spell for Druid, or blank if not available to Druid.</Description>
+    <Enum>
+      <Item Value="0">Cantrip</Item>
+      <Item Value="1" />
+      <Item Value="2" />
+      <Item Value="3" />
+      <Item Value="5" />
+      <Item Value="6" />
+      <Item Value="7" />
+      <Item Value="8" />
+      <Item Value="9" />
+      <Item Value="10">Epic</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="Paladin" DataType="Integer">
+    <Description>Spell level of this spell for Paladin, or blank if not available to Paladin.</Description>
+    <Enum>
+      <Item Value="0">Cantrip</Item>
+      <Item Value="1" />
+      <Item Value="2" />
+      <Item Value="3" />
+      <Item Value="5" />
+      <Item Value="6" />
+      <Item Value="7" />
+      <Item Value="8" />
+      <Item Value="9" />
+      <Item Value="10">Epic</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="Ranger" DataType="Integer">
+    <Description>Spell level of this spell for Ranger, or blank if not available to Ranger.</Description>
+    <Enum>
+      <Item Value="0">Cantrip</Item>
+      <Item Value="1" />
+      <Item Value="2" />
+      <Item Value="3" />
+      <Item Value="5" />
+      <Item Value="6" />
+      <Item Value="7" />
+      <Item Value="8" />
+      <Item Value="9" />
+      <Item Value="10">Epic</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="Wiz_Sorc" DataType="Integer">
+    <Description>Spell level of this spell for Wizard and Sorcerer, or blank if not available to Wizard and Sorcerer.</Description>
+    <Enum>
+      <Item Value="0">Cantrip</Item>
+      <Item Value="1" />
+      <Item Value="2" />
+      <Item Value="3" />
+      <Item Value="5" />
+      <Item Value="6" />
+      <Item Value="7" />
+      <Item Value="8" />
+      <Item Value="9" />
+      <Item Value="10">Epic</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="Innate" DataType="Integer">
+    <Description>Innate spell level of this spell.</Description>
+    <Enum>
+      <Item Value="0">Cantrip</Item>
+      <Item Value="1" />
+      <Item Value="2" />
+      <Item Value="3" />
+      <Item Value="5" />
+      <Item Value="6" />
+      <Item Value="7" />
+      <Item Value="8" />
+      <Item Value="9" />
+      <Item Value="10">Epic</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="ConjTime" DataType="Integer">
+    <Description>Time it takes to conjure the spell, in milliseconds.</Description>
+  </Column>
+
+  <Column Name="ConjAnim" DataType="String">
+    <Description>Type of hand movement while conjuring spell.</Description>
+    <Enum>
+      <Item Value="hand">Caster's hands are in front of him</Item>
+      <Item Value="head">Caster's hands reach up to above face level</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="ConjHeadVisual" DataType="String">
+    <Description>Visual effect to display above caster's head while conjuring the spell.</Description>
+  </Column>
+
+  <Column Name="ConjHandVisual" DataType="String">
+    <Description>Visual effect to display between caster's hands while conjuring the spell.</Description>
+  </Column>
+
+  <Column Name="ConjGrndVisual" DataType="String">
+    <Description>Visual effect to display on the ground under caster's feet while conjuring the spell.</Description>
+  </Column>
+
+  <Column Name="ConjSoundVFX" DataType="String">
+    <Description>Sound effect for background noises to play while conjuring the spell.</Description>
+  </Column>
+
+  <Column Name="ConjSoundMale" DataType="String">
+    <Description>Sound effect for caster's chanting to play for male characters while conjuring the spell.</Description>
+  </Column>
+
+  <Column Name="ConjSoundFemale" DataType="String">
+    <Description>Sound effect for caster's chanting to play for female characters while conjuring the spell.</Description>
+  </Column>
+
+  <Column Name="CastAnim" DataType="String">
+    <Description>Caster's pose after he finishes conjuring the spell.</Description>
+    <Enum>
+      <Item Value="Areaout" />
+      <Item Value="self" />
+      <Item Value="touch">Finger pointed at target</Item>
+      <Item Value="up">Hands upraised</Item>
+      <Item Value="attack">Attack animation performed</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="CastTime" DataType="Integer">
+    <Description>How long the caster stays in pose defined by CastAnim, in milliseconds.</Description>
+  </Column>
+
+  <Column Name="CastHeadVisual" DataType="String">
+    <Description>Visual effect to display above caster's head after conjuring the spell.</Description>
+  </Column>
+
+  <Column Name="CastHandVisual" DataType="String">
+    <Description>Visual effect to display between caster's hands after conjuring the spell.</Description>
+  </Column>
+
+  <Column Name="CastGrndVisual" DataType="String">
+    <Description>Visual effect to display on the ground under caster's feet after conjuring the spell.</Description>
+  </Column>
+
+  <Column Name="CastSound" DataType="String">
+    <Description>Sound effect played after the spell is conjured successfully.</Description>
+  </Column>
+
+  <Column Name="Proj" DataType="Integer">
+    <Description>Specifies whether the spell creates a projectile model that travels towards the target. If it does, the spell script is only fired once the projectile hits.</Description>
+    <Enum>
+      <Item Value="0">No</Item>
+      <Item Value="1">No</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="ProjModel" DataType="String">
+    <Description>Model of the spell projectile.</Description>
+  </Column>
+
+  <Column Name="ProjType" DataType="String">
+    <Description>Behavior of the projectile.</Description>
+    <Enum>
+      <Item Value="accelerating">Travels directly at target, gaining speed</Item>
+      <Item Value="homing">Travels directly at target at constant speed</Item>
+      <Item Value="linkedspiral" />
+      <Item Value="ballistic">Travels by high-angle ballistic trajectory</Item>
+      <Item Value="bounce">Travels by low-angle ballistic trajectory, bounces off the ground</Item>
+      <Item Value="spiral" />
+    </Enum>
+  </Column>
+
+  <Column Name="ProjSpwnPoint" DataType="String">
+    <Description>Defines at which point of caster's model the projectile originates.</Description>
+    <Enum>
+      <Item Value="hand">Originates from caster's hand</Item>
+      <Item Value="head">Originates from caster's head</Item>
+      <Item Value="monster0">Originates from monster node #0</Item>
+      <Item Value="monster1">Originates from monster node #1</Item>
+      <Item Value="monster2">Originates from monster node #2</Item>
+      <Item Value="monster3">Originates from monster node #3</Item>
+      <Item Value="monster4">Originates from monster node #4</Item>
+      <Item Value="monster5">Originates from monster node #5</Item>
+      <Item Value="monster6">Originates from monster node #6</Item>
+      <Item Value="monster7">Originates from monster node #7</Item>
+      <Item Value="monster8">Originates from monster node #8</Item>
+      <Item Value="monster9">Originates from monster node #9</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="ProjSound" DataType="String">
+    <Description>Sound the projectile makes.</Description>
+  </Column>
+
+  <Column Name="ProjOrientation" DataType="String">
+    <Description>Direction in which the projectile is oriented.</Description>
+    <Enum>
+      <Item Value="path">Along the path travelled</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="ImmunityType" DataType="String">
+    <Description>Type of immunity needed to ignore the effects of this spell.</Description>
+    <Enum>
+      <Item Value="Acid" />
+      <Item Value="Cold" />
+      <Item Value="Death" />
+      <Item Value="Disease" />
+      <Item Value="Divine" />
+      <Item Value="Electricity" />
+      <Item Value="Fear" />
+      <Item Value="Fire" />
+      <Item Value="Mind_Affecting" />
+      <Item Value="Negative" />
+      <Item Value="Poison" />
+      <Item Value="Positive" />
+      <Item Value="Sonic" />
+    </Enum>
+  </Column>
+
+  <Column Name="ItemImmunity" DataType="Integer">
+    <Description>Specifies whether there should be an "Immunity: Spell" item property corresponding to this spell.</Description>
+    <Enum>
+      <Item Value="0">No</Item>
+      <Item Value="1">No</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="SubRadSpell1" DataType="Integer" RowSource="spells.2da">
+    <Description>For spells with several ways to cast them via a radial submenu (e.g. Polymorph, Shapechange), the actual spell to cast when the first radial submenu item is selected.</Description>
+  </Column>
+
+  <Column Name="SubRadSpell2" DataType="Integer" RowSource="spells.2da">
+    <Description>For spells with several ways to cast them via a radial submenu (e.g. Polymorph, Shapechange), the actual spell to cast when the second radial submenu item is selected.</Description>
+  </Column>
+
+  <Column Name="SubRadSpell3" DataType="Integer" RowSource="spells.2da">
+    <Description>For spells with several ways to cast them via a radial submenu (e.g. Polymorph, Shapechange), the actual spell to cast when the third radial submenu item is selected.</Description>
+  </Column>
+
+  <Column Name="SubRadSpell4" DataType="Integer" RowSource="spells.2da">
+    <Description>For spells with several ways to cast them via a radial submenu (e.g. Polymorph, Shapechange), the actual spell to cast when the fourth radial submenu item is selected.</Description>
+  </Column>
+
+  <Column Name="SubRadSpell5" DataType="Integer" RowSource="spells.2da">
+    <Description>For spells with several ways to cast them via a radial submenu (e.g. Polymorph, Shapechange), the actual spell to cast when the fifth radial submenu item is selected.</Description>
+  </Column>
+
+  <!-- This should really reference categories.2da, but the latter is not a valid 2DA file -
+  it has unquoted spaces in column values. So, just hardcode it here. -->
+  <Column Name="Category" DataType="Integer">
+    <Description>Spell category, for AI.</Description>
+    <Enum>
+      <Item Value="1">Harmful_AOE_Discriminant</Item>
+      <Item Value="2">Harmful_Ranged</Item>
+      <Item Value="3">Harmful_Touch</Item>
+      <Item Value="4">Beneficial_Healing_AOE</Item>
+      <Item Value="5">Beneficial_Healing_Touch</Item>
+      <Item Value="6">Beneficial_Conditional_AOE</Item>
+      <Item Value="7">Beneficial_Conditional_Single</Item>
+      <Item Value="8">Beneficial_Enhancement_Area Effect</Item>
+      <Item Value="9">Beneficial_Enhancement_Single</Item>
+      <Item Value="10">Beneficial_Enhancement_Self</Item>
+      <Item Value="11">Harmful_AOE_Indiscriminant</Item>
+      <Item Value="12">TALENT_CATEGORY_BENEFICIAL_PROTECTION_SELF</Item>
+      <Item Value="13">TALENT_CATEGORY_BENEFICIAL_PROTECTION_SINGLE</Item>
+      <Item Value="14">TALENT_CATEGORY_BENEFICIAL_PROTECTION_AOE</Item>
+      <Item Value="15">TALENT_CATEGORY_BENEFICIAL_SUMMON</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="Master" DataType="Integer" RowSource="spells.2da">
+    <Description>For a spell cast via a radial submenu of another spell, the reference to that another spell.</Description>
+  </Column>
+
+  <Column Name="UserType" DataType="Integer">
+    <Description>Type of the spell.</Description>
+    <Enum>
+      <Item Value="1">Spell</Item>
+      <Item Value="2">Creature Power</Item>
+      <Item Value="3">Feat</Item>
+      <Item Value="4">Item Power</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="SpellDesc" DataType="StrRef">
+    <Description>Spell description.</Description>
+  </Column>
+
+  <Column Name="UseConcentration" DataType="Integer">
+    <Description>Determines whether a Concentration check is needed to successfully conjure the spell if interrupted.</Description>
+    <Enum>
+      <Item Value="0">No</Item>
+      <Item Value="1">Yes</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="SpontaneouslyCast" DataType="Integer">
+    <Description>Determines whether this spell can be cast spontaneously instead of another prepared spell of the same spell level.</Description>
+    <Enum>
+      <Item Value="0">No</Item>
+      <Item Value="1">Yes</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="AltMessage" DataType="StrRef">
+    <Description>Message displayed in the combat log for players other than caster himself. Token &lt;Custom0&gt; in the message will be replaced by the name of the caster.</Description>
+  </Column>
+
+  <Column Name="HostileSetting" DataType="Integer">
+    <Description>Determines whether the spell is hostile.</Description>
+    <Enum>
+      <Item Value="0">No</Item>
+      <Item Value="1">Yes</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="FeatID" DataType="Integer" RowSource="feat.2da">
+    <Description>A feat that this spell implements, for spells attached to feats.</Description>
+  </Column>
+
+  <Column Name="Counter1" DataType="Integer" RowSource="spells.2da">
+    <Description>The first counterspell for this spell.</Description>
+  </Column>
+
+  <Column Name="Counter2" DataType="Integer" RowSource="spells.2da">
+    <Description>The second counterspell for this spell.</Description>
+  </Column>
+
+  <Column Name="HasProjectile" DataType="Integer">
+    <Description>Determines whether to send projectile information to game clients. Set to 1 if either of CastHandVisual, Proj or ProjModel are not blank (****), and to 0 otherwise.</Description>
+    <Enum>
+      <Item Value="0">No</Item>
+      <Item Value="1">Yes</Item>
+    </Enum>
+  </Column>
+
+</TwoDASchema>

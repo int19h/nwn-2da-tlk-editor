@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TwoDASchema xmlns="http://int19h.org/xsd/2daschema.xsd"
+             DisplayName="Appearance"
+             AppliesTo="^appearance\.2da$">
+
+  <Column Name="LABEL" DataType="String">
+    <Description>Human-readable identifier for the appearance.</Description>
+  </Column>
+
+  <Column Name="STRING_REF" DataType="StrRef">
+    <Description>Creature name.</Description>
+  </Column>
+
+  <Column Name="NAME" />
+
+  <Column Name="RACE">
+    <Description>Race of this appearance.</Description>
+  </Column>
+
+  <Column Name="ENVMAP" />
+
+  <Column Name="BLOODCOLR">
+    <Description>Type of blood drawn when damaged.</Description>
+    <Enum>
+      <Item Value="R">Red</Item>
+      <Item Value="G">Green</Item>
+      <Item Value="W">Bones</Item>
+      <Item Value="N">None</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="MODELTYPE">
+    <Enum>
+      <Item Value="P">Player</Item>
+      <Item Value="S">Simple animation set</Item>
+      <Item Value="F">Full animation set</Item>
+      <Item Value="FW">Full animation set + wing node</Item>
+      <Item Value="FT">Full animation set + tail node</Item>
+      <Item Value="FWT">Full animation set + wing and tail nodes</Item>
+      <Item Value="L">Large size</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="WEAPONSCALE" DataType="Float">
+    <Description>Scale of weapons to appear on the model.</Description>
+  </Column>
+
+  <Column Name="WING_TAIL_SCALE" DataType="Float">
+    <Description>Scale of wings and tails to appear on the model.</Description>
+  </Column>
+
+  <Column Name="HELMET_SCALE_M" DataType="Float">
+    <Description>Scale of helmet to appear on the male model.</Description>
+  </Column>
+
+  <Column Name="HELMET_SCALE_F" DataType="Float">
+    <Description>Scale of helmet to appear on the female model.</Description>
+  </Column>
+
+  <Column Name="MOVERATE">
+    <Description>Movement rate. References lines from creaturespeed.2da, by 2DAName column.</Description>
+    <Enum>
+      <Item Value="VSLOW">Very Slow</Item>
+      <Item Value="SLOW">Slow</Item>
+      <Item Value="NORM">Normal</Item>
+      <Item Value="FAST">Fast</Item>
+      <Item Value="VFAST">Very Fast</Item>
+    </Enum>
+  </Column>
+
+  <Column Name="WALKDIST" DataType="Float">
+    <Description>Meters per step when walking.</Description>
+  </Column>
+
+  <Column Name="RUNDIST" DataType="Float">
+    <Description>Meters per step when running.</Description>
+  </Column>
+
+  <Column Name="PERSPACE" DataType="Float">
+    <Description>How much space it gives to anything around it: diameter from model base, in meters.</Description>
+  </Column>
+
+  <Column Name="CREPERSPACE" DataType="Float">
+    <Description>How much space other things give to it: diameter from model base, in meters.</Description>
+  </Column>
+
+  <Column Name="HEIGHT" DataType="Float">
+    <Description>Height of the model.</Description>
+  </Column>
+
+  <Column Name="HITDIST" DataType="Float">
+    <Description>Preferred distance for attackers to hit the creature, in meters from model base.</Description>
+  </Column>
+
+  <Column Name="PREFATCKDIST" DataType="Float">
+    <Description>Preferred attack distance, in meters.</Description>
+  </Column>
+
+</TwoDASchema>
